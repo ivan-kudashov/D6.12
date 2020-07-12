@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block cssImport %}
+<link rel="stylesheet" href="{% static 'CSS/animal_card.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Shelter — Dogs</title>
+{% endblock %}
+
+{% block content %}
+{% for threeDogs in object_list %}
+{% if threeDogs|length == 0 %}
+<p class="text-center">No Data</p>
+{% else %}
+<div class="row">
+    {% for dog in threeDogs %}
+    <div class="col-lg-4">
+        <div class="animal-card border-primary">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img class="animal-card-photo" src="{{ dog.image.url }}" alt="">
+                    <div class="name-wrapper text-primary">
+                        <p class="text-center font-italic">{{ dog.name }}</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        {% if dog.breed %}
+                        <p><span class="font-weight-bold">Breed:</span> {{ dog.breed }}</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Breed:</span> unknown</p>
+                        {% endif %}
+
+                        {% if dog.age %}
+                        <p><span class="font-weight-bold">Age:</span> {{ dog.age }}</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Age:</span> unknown</p>
+                        {% endif %}
+
+                        <p><span class="font-weight-bold">Gender:</span> {{ dog.gender }}</p>
+
+                        {% if dog.size == 'L' %}
+                        <p><span class="font-weight-bold">Size:</span> Large</p>
+                        {% elif dog.size == 'S' %}
+                        <p><span class="font-weight-bold">Size:</span> Small</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Size:</span> Medium</p>
+                        {% endif %}
+
+                        <a class="details-link text-primary" href="../dog/{{ dog.pk }}">details >>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

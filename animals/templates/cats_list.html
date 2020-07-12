@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssImport %}
+<link rel="stylesheet" href="{% static 'CSS/animal_card.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Petsy — Cats</title>
+{% endblock %}
+
+{% block content %}
+{% for threeCats in object_list %}
+{% if threeCats|length == 0 %}
+<p class="text-center">No Data</p>
+{% else %}
+<div class="row">
+    {% for cat in threeCats %}
+    <div class="col-lg-4">
+        <div class="animal-card border-primary">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img class="animal-card-photo" src="{{ cat.image.url }}" alt="">
+                    <div class="name-wrapper text-primary">
+                        <p class="text-center font-italic">{{ cat.name }}</p>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="info">
+                        {% if cat.breed %}
+                        <p><span class="font-weight-bold">Breed:</span> {{ cat.breed }}</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Breed:</span> unknown</p>
+                        {% endif %}
+
+                        {% if cat.age %}
+                        <p><span class="font-weight-bold">Age:</span> {{ cat.age }}</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Age:</span> unknown</p>
+                        {% endif %}
+
+                        <p><span class="font-weight-bold">Gender:</span> {{ cat.gender }}</p>
+                        <p><span class="font-weight-bold">Color:</span> {{ cat.color }}</p>
+
+                        {% if cat.fur == 'L' %}
+                        <p><span class="font-weight-bold">Fur:</span> long</p>
+                        {% elif cat.fur == 'S' %}
+                        <p><span class="font-weight-bold">Fur:</span> short</p>
+                        {% else %}
+                        <p><span class="font-weight-bold">Fur:</span> hairless</p>
+                        {% endif %}
+                        <a class="details-link text-primary" href="../cat/{{ cat.pk }}">details >>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+{% endblock %}

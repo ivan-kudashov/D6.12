@@ -1,0 +1,12 @@
+Babel
+django-phonenumber-field
+phonenumbers
+Pillow
+asgiref
+Django
+backcall
+decorator
+django-crispy-forms
+ipython
+pexpect
+sqlparse

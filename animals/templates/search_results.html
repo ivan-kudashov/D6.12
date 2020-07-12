@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssImport %}
+<link rel="stylesheet" href="{% static 'CSS/search.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Shelter — Search</title>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="offset-sm-4 col-sm-4">
+        <h1 class="text-center text-primary">Search Results</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-4 col-sm-4">
+        {% if not search_results %}
+        <p class="text-center mt-4">could not find...</p>
+        {% else %}
+        <ul class="list-group">
+            {% for pet in search_results %}
+            <li class="list-group-item text-center">
+                {% if pet.species == "cat" or pet.species == "dog" %}
+                <a class="pet-item text-primary" href="/{{ pet.species }}/{{ pet.pk }}">{{ pet }}</a>
+                {% else %}
+                <a class="pet-item" href="/animal/{{ pet.pk }}">{{ pet }}</a>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

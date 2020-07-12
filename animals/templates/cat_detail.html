@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssImport %}
+<link rel="stylesheet" href="{% static 'CSS/animal_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Shelter — {{ cat }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper text-primary border-primary">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="text-center">
+                <img class="detail-photo float-center" src="{{ cat.image.url }}" alt="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex-nowrap p-5">
+                <h1 class="text-center text-primary">{{ cat.species }} {{ cat.name }}</h1>
+                <div class="">
+                    {{ cat.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col text-center info-line">
+            {% if cat.breed %}
+            <p ><span class="font-weight-bold">Breed:</span> {{ cat.breed }}
+                {% else %}
+                <span class="font-weight-bold">Breed:</span> unknown<b>/</b>
+                {% endif %}
+                {% if cat.age %}
+                <span class="font-weight-bold">Age:</span> {{ cat.age }}
+                {% else %}
+                <span class="font-weight-bold">Age:</span> unknown
+                {% endif %}<b>/</b>
+                <span class="font-weight-bold">Gender:</span> {{ cat.gender }}<b>/</b>
+                <span class="font-weight-bold">Color:</span> {{ cat.color }}<b>/</b>
+                {% if cat.fur == 'L' %}
+                <span class="font-weight-bold">Fur:</span> long<b>/</b>
+                {% elif cat.fur == 'S' %}
+                <span class="font-weight-bold">Fur:</span> short<b>/</b>
+                {% else %}
+                <span class="font-weight-bold">Fur:</span> hairless<b>/</b>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

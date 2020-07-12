@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block cssImport %}
+<link rel="stylesheet" href="{% static 'CSS/animal_detail.css' %}">
+{% endblock %}
+
+{% block title %}
+<title>Shelter — {{ dog }}</title>
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper text-primary border-primary">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="text-center">
+                <img class="detail-photo float-center" src="{{ dog.image.url }}" alt="">
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="d-flex-nowrap p-5">
+                <h1 class="text-center text-primary">{{ dog.species }} {{ dog.name }}</h1>
+                <div class="">
+                    {{ dog.description }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col text-center info-line">
+            {% if dog.breed %}
+            <p><span class="font-weight-bold">Breed:</span> {{ dog.breed }}
+                {% else %}
+                <span class="font-weight-bold">Breed:</span> unknown<b>/</b>
+                {% endif %}
+                {% if dog.age %}
+                <span class="font-weight-bold">Age:</span> {{ dog.age }}
+                {% else %}
+                <span class="font-weight-bold">Age:</span> unknown
+                {% endif %}<b>/</b>
+                <span class="font-weight-bold">Gender:</span> {{ dog.gender }}<b>/</b>
+                {% if dog.size == 'L' %}
+                <span class="font-weight-bold">Size:</span> Large<b>/</b>
+                {% elif dog.size == 'S' %}
+                <span class="font-weight-bold">Size:</span> Small<b>/</b>
+                {% else %}
+                <span class="font-weight-bold">Size:</span> Medium<b>/</b>
+                {% endif %}
+
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+h1 {
+    font-family: 'Leckerli One', cursive;
+    color: #F226E8;
+    opacity: 0.7;
+    text-transform: capitalize;
+    font-size: 50px;
+}
+
+.content-wrapper {
+    border: solid 1px rgba(242, 38, 232, 0.3);
+    border-radius: 12px;
+    padding: 6px;
+}
+
+.detail-photo {
+    min-height: 430px;
+    min-width: 430px;
+    max-height: 28rem;
+    max-width: 28rem;
+    object-fit: cover;
+    margin-top: 1vw;
+    border-radius: 8px;
+}
+
+.info-line {
+    font-size: 14px;
+    font-style: italic;
+    margin-top: 8px;
+    text-transform: capitalize !important;
+}

@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Leckerli+One&family=Roboto&display=swap');
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 90px;
+    min-width: 480px;
+}
+
+input[type=search] {
+    background-color: #FBB8F8;
+    border: solid 2px white;
+    color: white;
+}
+
+input[type=search]::placeholder {
+    color: white;
+}
+
+input[type=search]:focus {
+    background-color: #FBB8F8;
+    color: white;
+}
+
+.form-control:focus {
+    border-color: white;
+    outline: 0;
+    box-shadow: inset 0 0 0 0;
+}
+
+.page-content {
+    margin-top: 100px;
+}
+
+.logo {
+    font-family: 'Leckerli One', cursive;
+    font-size: 40px;
+}
+
+.navbar-brand {
+    color: #FBB8F8 !important;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.page-footer {
+    color: white;
+    font-size: 14px;
+}
+
+.footer-copyright>a {
+    color: #FBB8F8 !important;
+}
+
+.footer-copyright>a:hover {
+    color: #F226E8 !important;
+    text-decoration: none;
+}
